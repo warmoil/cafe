@@ -7,3 +7,9 @@ spring:
     url: jdbc:h2:mem:test
     username: sa
     password:
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/yourDatabaseName
+      embedded:
+        version: 4.4.2

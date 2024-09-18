@@ -8,5 +8,6 @@ import org.springframework.core.env.Environment
 class CafeApplication
 
 fun main(args: Array<String>) {
+    println(System.getProperty("spring.profiles.active"))
     runApplication<CafeApplication>(*args)
 }
