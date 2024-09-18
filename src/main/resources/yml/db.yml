@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${maria.host}:${maria.port}/${maria.dbname}?serverTimezone=Asia/Seoul
+    username: ${maria.username}
+    password: ${maria.password}

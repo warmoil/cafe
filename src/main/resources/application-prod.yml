@@ -1,0 +1,10 @@
+spring:
+  config:
+    import:
+      - classpath:/yml/db.yml
+      - classpath:/yml/common.yml
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
