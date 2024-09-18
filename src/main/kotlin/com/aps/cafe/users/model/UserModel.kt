@@ -1,4 +1,7 @@
 package com.aps.cafe.users.model
 
-class UserModel {
-}
+data class UserModel(
+    val id: String,
+    val nickname: String,
+    val password: String,
+)
