@@ -1,3 +1,3 @@
 package com.aps.cafe.users.model
 
-data class VerificationModel(val username: String, val code: String)
+data class VerificationModel(val userId: String, val code: String)

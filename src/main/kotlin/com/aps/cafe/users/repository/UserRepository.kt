@@ -7,6 +7,8 @@ interface UserRepository {
     fun registerUser(model: UserModel): UserModel
     fun getUserById(id: String): UserModel?
 
+    fun existsById(id: String): Boolean
+
     fun deleteUserById(id: String)
     fun modifyUser(model: UserModel): UserModel?
 
