@@ -26,6 +26,10 @@ class UserRepositoryImpl(
         return toModel(user)
     }
 
+    override fun existsById(id: String): Boolean {
+        return userRepo.existsById(id)
+    }
+
     override fun deleteUserById(id: String) {
         val user = userRepo.findById(id) ?: return
         userRepo.delete(user)

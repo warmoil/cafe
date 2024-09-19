@@ -8,12 +8,19 @@ import org.springframework.stereotype.Repository
 import java.util.concurrent.TimeUnit
 
 @Repository
-class VerificationRepoImpl : VerificationRepository {
-    private val map = ExpiringMap.builder()
+class VerificationRepoImpl(
+    private val map: MutableMap<String, String> = ExpiringMap.builder()
         .maxSize(Integer.MAX_VALUE)
         .expirationPolicy(ExpirationPolicy.CREATED)
         .expiration(10, TimeUnit.MINUTES)
-        .build<String, String>()
+        .build(),
+    private val verifiedMap: MutableMap<String, Boolean> = ExpiringMap.builder()
+        .maxSize(Integer.MAX_VALUE)
+        .expirationPolicy(ExpirationPolicy.CREATED)
+        .expiration(10, TimeUnit.MINUTES)
+        .build()
+) : VerificationRepository {
+
     private val chars = ('a'..'z') + ('0'..'9')
 
 
@@ -23,8 +30,14 @@ class VerificationRepoImpl : VerificationRepository {
         return code
     }
 
-    override fun authenticate(model: VerificationModel): Boolean {
-        return map[model.username] == model.code
+    override fun verify(model: VerificationModel): Boolean {
+        val result = map[model.userId] == model.code
+        if (result) verifiedMap[model.userId] = true
+        return result
+    }
+
+    override fun isVerified(id: String): Boolean {
+        return verifiedMap[id] == true
     }
 
 
