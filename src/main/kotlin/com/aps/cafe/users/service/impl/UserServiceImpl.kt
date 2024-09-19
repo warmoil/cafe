@@ -21,21 +21,22 @@ class UserServiceImpl(
     }
 
 
-    override fun reqCode(email: String) {
+    override fun reqCode(email: String): String {
         if (userRepository.getUserById(email) != null) throw ResponseStatusException(
             HttpStatus.CONFLICT,
             "이미 존재하는 아이디입니다."
         )
-        verificationRepository.createCode(email)
+        return verificationRepository.createCode(email)
     }
 
     override fun registerUser(model: UserModel): LoginUserVO {
         if (existsById(model.id)) throw ResponseStatusException(HttpStatus.CONFLICT, "이미 존재하는 아이디입니다")
-        val created = userRepository.registerUser(model)
         if (!verificationRepository.isVerified(model.id)) throw ResponseStatusException(
             HttpStatus.UNAUTHORIZED,
             "인증되지 않았거나 인증한지 너무 오래되었습니다."
         )
+        val created = userRepository.registerUser(model)
+
         return LoginUserVO(
             id = created.id,
             nickname = created.nickname,

@@ -7,7 +7,7 @@ import com.aps.cafe.users.model.vo.LoginUserVO
 interface UserService {
     fun existsById(id: String): Boolean
 
-    fun reqCode(email: String)
+    fun reqCode(email: String): String
 
     fun registerUser(model: UserModel): LoginUserVO
 

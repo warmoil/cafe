@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <title>회원가입</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="signup-container">
+    <form method="post">
+        <h1>회원가입</h1>
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">비밀번호:</label>
+        <input type="password" placeholder="비밀번호는 4글자 이상입니다." id="password" name="password" required> <label
+            id="pw-length"> </label>
+        <br>비밀번호 확인:
+        <input type="password" placeholder="비밀번호는 4글자 이상입니다." id="password_confirm" name="password_confirm">
+        <label id="pw-matched" > </label>
+        <br>
+        <button type="button" onclick="sendVerificationCode()">인증코드 발송</button>
+        <input type="text" id="verification_code" name="verification_code" required>
+        <button type="button">인증 확인</button>
+        <br>
+        <button type="button" disabled id="register">회원가입</button>
+    </form>
+</div>
+</body>
+<script>
+
+    const pw = document.getElementById('password')
+    const pwCF = document.getElementById('password_confirm')
+    const pwTxt = document.getElementById('pw-length')
+    const matched = document.getElementById('pw-matched')
+    const registerBtn = document.getElementById('register')
+
+
+    window.onload = () => {
+        pw.addEventListener('input', () => {
+            if (pw.value.length < 4) {
+                pwTxt.textContent = "비밀 번호는 4글자 이상이어야 합니다"
+            } else {
+                pwTxt.textContent = ""
+            }
+        })
+
+        pwCF.addEventListener('input', () => {
+            if (pw.value.length < 4 || pwCF.value.length < 4) {
+                matched.textContent = ""
+            } else {
+                if (isPwSameAndMore4()) {
+                    matched.textContent = "비밀번호가 서로 일치합니다"
+                    registerBtn.disabled = false
+                } else {
+                    matched.textContent = "비밀번호가 서로 다릅니다";
+                    registerBtn.disabled = true;
+                }
+            }
+        })
+    }
+
+    function isPwSameAndMore4() {
+        const pwVal = pw.value
+        const pwCFVal = pwCF.value
+        return pwVal.length >= 4 && pwCFVal.length >= 4 && pwVal === pwCFVal
+    }
+
+    function sendVerificationCode() {
+    }
+</script>
+</html>
