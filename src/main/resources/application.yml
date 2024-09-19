@@ -1,0 +1,19 @@
+spring:
+  config:
+    import:
+      - classpath:/yml/db.yml
+      - classpath:/yml/common.yml
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: true
+
+  thymeleaf:
+    cache: false
+

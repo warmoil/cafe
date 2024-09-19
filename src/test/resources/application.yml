@@ -1,0 +1,20 @@
+spring:
+#  config:
+#    import:
+#      - classpath:/yml/common.yml
+
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/yourDatabaseName
+      embedded:
+        version: 4.4.2

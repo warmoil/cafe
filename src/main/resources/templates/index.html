@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello, Thymeleaf!</title>
+</head>
+<body>
+<h1>Hello, World!</h1>
+<p id="greeting-filed" th:text="${nickname}"></p>
+<a href="/users/login">로그인하기</a>
+<a href="/users/register">회원가입</a>
+</body>
+<script>
+    const greetingMsg = document.getElementById('greeting-filed')
+
+
+    window.onload = () =>{
+        greetingMsg.innerText += "님 안녕하세요!"
+    }
+</script>
+</html>

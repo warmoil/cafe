@@ -1,0 +1,5 @@
+rabbitmq:
+  host: ${rabbitmq.host}
+  port: ${rabbitmq.port}
+  username: ${rabbitmq.username}
+  password: ${rabbitmq.password}
