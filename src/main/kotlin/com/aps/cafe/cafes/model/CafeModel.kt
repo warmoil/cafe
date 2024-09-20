@@ -1,6 +1,5 @@
 package com.aps.cafe.cafes.model
 
-import java.time.Instant
 import java.time.ZonedDateTime
 
 data class CafeModel(

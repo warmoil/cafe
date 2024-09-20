@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/cafes")
 class CafeRestController {
+    private val cafeNameMap = mutableMapOf<String, CafeModel>()
+    private val cafeIdMap = mutableMapOf<Long, CafeModel>()
+
 
     // 카페 이름 중복확인
     @GetMapping("/check-duplicate")
-    fun checkDuplicate(): ResponseEntity<HttpStatus> {
+    fun checkDuplicate(@RequestParam name: String): ResponseEntity<HttpStatus> {
         return ResponseEntity(HttpStatus.CONFLICT)
     }
 
