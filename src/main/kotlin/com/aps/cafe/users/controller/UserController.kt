@@ -1,8 +1,5 @@
 package com.aps.cafe.users.controller
 
-import com.aps.cafe.mails.service.EmailSendDto
-import com.aps.cafe.mails.service.EmailService
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
