@@ -6,7 +6,15 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class CafeRepositoryImpl: CafeRepository {
-    override fun existsByCafeName(cafeId: String): Boolean {
+    override fun existsByCafeName(cafeName: String): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun getByCafeName(cafeName: String): CafeModel? {
+        TODO("Not yet implemented")
+    }
+
+    override fun getByCafeId(id: Long): CafeModel? {
         TODO("Not yet implemented")
     }
 

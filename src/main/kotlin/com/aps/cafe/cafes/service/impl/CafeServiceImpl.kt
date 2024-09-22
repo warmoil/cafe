@@ -1,12 +1,13 @@
 package com.aps.cafe.cafes.service.impl
 
 import com.aps.cafe.cafes.model.CafeModel
+import com.aps.cafe.cafes.repository.CafeRepository
 import com.aps.cafe.cafes.service.CafeService
 import org.springframework.stereotype.Service
 
 @Service
 class CafeServiceImpl(
-
+    private val cafeRepository: CafeRepository
 ) : CafeService {
     override fun isExists(name: String): Boolean {
         TODO("Not yet implemented")
@@ -20,7 +21,7 @@ class CafeServiceImpl(
         TODO("Not yet implemented")
     }
 
-    override fun delete(userId: String,id: Long) {
+    override fun delete(userId: String, id: Long) {
         TODO("Not yet implemented")
     }
 

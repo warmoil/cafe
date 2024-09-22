@@ -10,7 +10,6 @@ import jakarta.annotation.PostConstruct
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
-import org.hibernate.validator.constraintvalidators.RegexpURLValidator
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -22,15 +21,13 @@ import org.springframework.web.bind.annotation.*
 class CafeRestController(
     private val cafeService: CafeService,
     private val searchService: CafeSearchService,
-    private val search: CafeSearchService,
-    private val regexpURLValidator: RegexpURLValidator
 ) {
 
-    @PostConstruct
-    fun init() {
-        val cafes = cafeService.getAll()
-        searchService.init(cafes)
-    }
+//    @PostConstruct
+//    fun init() {
+//        val cafes = cafeService.getAll()
+//        searchService.init(cafes)
+//    }
 
     // 카페 이름 중복확인
     @GetMapping("/check-duplicate")
