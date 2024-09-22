@@ -12,6 +12,7 @@ data class CafeEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
+    @Column(unique = true)
     val name: String,
     val description: String,
     val ownerId: String,
