@@ -8,6 +8,6 @@ interface CafeRepository {
     fun getByCafeId(id: Long): CafeModel?
     fun create(model: CafeModel): CafeModel
     fun update(model: CafeModel): CafeModel
-    fun delete(model: CafeModel)
+    fun delete(id: Long)
     fun getAll(): List<CafeModel>
 }

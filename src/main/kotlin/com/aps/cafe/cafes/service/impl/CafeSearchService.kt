@@ -1,4 +1,4 @@
-package com.aps.cafe.cafes.service
+package com.aps.cafe.cafes.service.impl
 
 import com.aps.cafe.cafes.entity.CafeEntity
 import com.aps.cafe.cafes.model.CafeModel

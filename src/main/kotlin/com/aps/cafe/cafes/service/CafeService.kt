@@ -3,7 +3,7 @@ package com.aps.cafe.cafes.service
 import com.aps.cafe.cafes.model.CafeModel
 
 interface CafeService {
-    fun isExists(name: String): Boolean
+    fun isExistsByName(name: String): Boolean
 
     fun create(model: CafeModel): CafeModel
 

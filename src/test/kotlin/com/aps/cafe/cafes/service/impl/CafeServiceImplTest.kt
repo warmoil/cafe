@@ -54,7 +54,7 @@ class CafeServiceImplTest {
         every { cafeRepository.existsByCafeName(existsCafe.name) } returns (true)
 
         // when
-        val isExists = service.isExists(existsCafe.name)
+        val isExists = service.isExistsByName(existsCafe.name)
 
         //then
         assertTrue(isExists)
@@ -67,7 +67,7 @@ class CafeServiceImplTest {
         every { cafeRepository.existsByCafeName(notExistsCafe.name) } returns (false)
 
         // when
-        val isExists = service.isExists(notExistsCafe.name)
+        val isExists = service.isExistsByName(notExistsCafe.name)
 
         //then
         assertFalse(isExists)
@@ -92,6 +92,7 @@ class CafeServiceImplTest {
     fun reqCreateCafeIfNotExistsName() {
         // given
         every { cafeRepository.existsByCafeName(notExistsCafe.name) } returns (false)
+        every { cafeRepository.create(notExistsCafe) }.returns(notExistsCafe)
         // when
         val result = service.create(notExistsCafe)
         // then
@@ -126,14 +127,14 @@ class CafeServiceImplTest {
     }
 
     @Test
-    @DisplayName("카페주인이 존재하는 카페이름으로 변경하려 에러를 반환")
+    @DisplayName("카페 이름이 이미 존재하는 카페이름으로 변경하려 하면 에러를 반환")
     fun updateCafeNameExistsNameCafe() {
         // given
+        every { cafeRepository.getByCafeId(existsCafe.id) }.returns(existsCafe)
         every { cafeRepository.existsByCafeName(existsCafe.name) }.returns(true)
-
         // when,then
         val exception = assertThrows<ResponseStatusException> {
-            service.update(userId = notExistsCafe.ownerId, model = existsCafe)
+            service.update(userId = existsCafe.ownerId, model = existsCafe)
         }
         assertEquals(HttpStatus.CONFLICT, exception.statusCode)
     }
@@ -144,6 +145,12 @@ class CafeServiceImplTest {
         // given
         every { cafeRepository.getByCafeName(notExistsCafe.name) }.returns(null)
         every { cafeRepository.getByCafeId(existsCafe.id) }.returns(existsCafe)
+        every { cafeRepository.existsByCafeName(notExistsCafe.name) }.returns(false)
+        every { cafeRepository.update(model = existsCafe.copy(name = notExistsCafe.name)) }.returns(
+            existsCafe.copy(
+                name = notExistsCafe.name,
+            )
+        )
         // when
         val result = service.update(
             userId = existsCafe.ownerId, model = existsCafe.copy(
@@ -171,7 +178,7 @@ class CafeServiceImplTest {
     fun deleteCafeIfOwner() {
         // given
         every { cafeRepository.getByCafeId(existsCafe.id) }.returns(existsCafe)
-
+        every { cafeRepository.delete(existsCafe.id) }.returns(Unit)
         // when
         assertDoesNotThrow {
             service.delete(userId = existsCafe.ownerId, id = existsCafe.id)

@@ -5,7 +5,7 @@ import com.aps.cafe.cafes.repository.CafeRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-class CafeRepositoryImpl: CafeRepository {
+class CafeRepositoryImpl : CafeRepository {
     override fun existsByCafeName(cafeName: String): Boolean {
         TODO("Not yet implemented")
     }
@@ -26,7 +26,7 @@ class CafeRepositoryImpl: CafeRepository {
         TODO("Not yet implemented")
     }
 
-    override fun delete(model: CafeModel) {
+    override fun delete(id: Long) {
         TODO("Not yet implemented")
     }
 

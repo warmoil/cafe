@@ -3,10 +3,9 @@ package com.aps.cafe.cafes.controller.rest
 import com.aps.cafe.cafes.controller.dto.CafeCreateDto
 import com.aps.cafe.cafes.controller.dto.CafeUpdateDto
 import com.aps.cafe.cafes.model.CafeModel
-import com.aps.cafe.cafes.service.CafeSearchService
+import com.aps.cafe.cafes.service.impl.CafeSearchService
 import com.aps.cafe.cafes.service.CafeService
 import com.aps.cafe.common.CommonResponseEntity
-import jakarta.annotation.PostConstruct
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
@@ -32,7 +31,7 @@ class CafeRestController(
     // 카페 이름 중복확인
     @GetMapping("/check-duplicate")
     fun checkDuplicate(@Valid @RequestParam @Min(2) @NotBlank name: String): ResponseEntity<CommonResponseEntity<Boolean>> {
-        return ResponseEntity.ok(CommonResponseEntity(cafeService.isExists(name)))
+        return ResponseEntity.ok(CommonResponseEntity(cafeService.isExistsByName(name)))
     }
 
     // 생성
