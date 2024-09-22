@@ -37,12 +37,16 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
+    // validation
     implementation("org.springframework.boot:spring-boot-starter-validation")
+
+    // swagger
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
     // email
     implementation("org.springframework.boot:spring-boot-starter-mail")
 
-    //mock
+    // mock
     testImplementation("io.mockk:mockk:1.13.4")
     // rabbitMQ
     implementation("org.springframework.boot:spring-boot-starter-amqp")
