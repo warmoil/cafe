@@ -24,6 +24,10 @@ class CafeServiceImpl(
         TODO("Not yet implemented")
     }
 
+    override fun getByCafeName(cafeName: String): CafeModel? {
+        TODO("Not yet implemented")
+    }
+
     override fun getAll(): List<CafeModel> {
         TODO("Not yet implemented")
     }

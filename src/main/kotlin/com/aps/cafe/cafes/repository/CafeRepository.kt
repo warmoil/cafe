@@ -7,6 +7,5 @@ interface CafeRepository {
     fun create(model: CafeModel): CafeModel
     fun update(model: CafeModel): CafeModel
     fun delete(model: CafeModel)
-
     fun getAll(): List<CafeModel>
 }

@@ -16,6 +16,6 @@ data class CafeCreateDto(
 data class CafeUpdateDto(
     @field:NotBlank
     val id: Long,
-    val name: String?,
-    val designation: String?,
+    val name: String = "",
+    val designation: String = "",
 )
